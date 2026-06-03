@@ -39,6 +39,7 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 15px;
+      background: #f0f0f0;
     }
     .product-card h3 {
       font-size: 20px;
@@ -50,10 +51,26 @@
       font-size: 18px;
       font-weight: bold;
       color: #000;
-      margin: 0;
+      margin: 0 0 15px 0;
+    }
+    .btn-whatsapp {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn-whatsapp:hover {
+      background: #1da851;
     }
     footer { background: #000; color: white; text-align: center; padding: 30px 20px; margin-top: 60px; }
-    .loading { text-align: center; padding: 40px; color: #666; }
+    .loading { text-align: center; padding: 40px; color: #666; grid-column: 1 / -1; }
   </style>
 </head>
 <body>
@@ -91,6 +108,9 @@
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
+  
+  // نمرة WhatsApp ديالك
+  const whatsappNumber = "212612676691"; 
 
   async function loadProducts() {
     try {
@@ -106,11 +126,17 @@
       container.innerHTML = '';
       querySnapshot.forEach((doc) => {
         const p = doc.data();
+        const message = `سلام، بغيت نطلب ساعة ${p.name} بثمن ${p.price} درهم من موقع Noblex`;
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        
         container.innerHTML += `
           <div class="product-card">
-            <img src="${p.image}" alt="${p.name}" loading="lazy">
+            <img src="${p.image || 'https://via.placeholder.com/280x280?text=No+Image'}" alt="${p.name}" loading="lazy">
             <h3>${p.name}</h3>
-            <p>${p.price}</p>
+            <p>${p.price} درهم</p>
+            <a href="${whatsappLink}" target="_blank" class="btn-whatsapp">
+              اطلب عبر واتساب
+            </a>
           </div>
         `;
       });

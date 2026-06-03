@@ -1,115 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>Noblex Watches</title>
-    <style>
-        body { margin: 0; font-family: Arial; background: black; color: white; scroll-behavior: smooth; }
-        nav { display: flex; justify-content: space-between; padding: 20px; background: #111; position: sticky; top: 0; z-index: 100; }
-        nav a { color: white; text-decoration: none; margin-left: 20px; }
-        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://images.unsplash.com/photo-1524592094714-0f0654e20314") center/cover; }
-        .hero h1 { font-size: 50px; }
-        .btn { background: gold; color: black; padding: 12px 25px; text-decoration: none; margin-top: 20px; font-weight: bold; }
-        .watches { padding: 60px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .watch { background: #111; padding: 20px; text-align: center; border: 1px solid #222; }
-        .watch img { width: 100%; }
-        .contact { padding: 60px; text-align: center; }
-        input, textarea { width: 80%; padding: 12px; margin: 10px; background: #1a1a1a; border: 1px solid #333; color: white; }
-        button { padding: 12px 25px; background: gold; border: none; font-weight: bold; cursor: pointer; }
-        button:disabled { background: #555; }
-        footer { text-align: center; padding: 20px; background: #111; color: #777; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noblex - Luxury Watches</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Arial', sans-serif; background: #fafafa; color: #111; }
+    
+    header { background: #000; color: white; padding: 20px; text-align: center; }
+    header h1 { font-size: 32px; letter-spacing: 3px; }
+    
+    .hero { text-align: center; padding: 60px 20px; background: white; }
+    .hero h2 { font-size: 28px; margin-bottom: 15px; }
+    .hero p { color: #666; font-size: 18px; }
+    
+    #products-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .product-card {
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .product-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .product-card h3 {
+      font-size: 20px;
+      margin: 10px 0 8px 0;
+      color: #111;
+      text-transform: capitalize;
+    }
+    .product-card p {
+      font-size: 18px;
+      font-weight: bold;
+      color: #000;
+      margin: 0;
+    }
+    
+    footer { background: #000; color: white; text-align: center; padding: 30px 20px; margin-top: 60px; }
+    .loading { text-align: center; padding: 40px; color: #666; }
+  </style>
 </head>
 <body>
 
-<nav>
-    <h2>NOBLEX</h2>
-    <div>
-        <a href="#">Home</a>
-        <a href="#watches">Watches</a>
-        <a href="#contact">Contact</a>
-    </div>
-</nav>
+  <header>
+    <h1>NOBLEX</h1>
+  </header>
 
-<section class="hero">
-    <h1>Luxury Watch Collection</h1>
-    <p>Elegance in every second</p>
-    <a class="btn" href="#watches">Explore Watches</a>
-</section>
+  <section class="hero">
+    <h2>ساعات فاخرة تصنع الفرق</h2>
+    <p>اكتشف مجموعتنا الحصرية من الساعات الراقية</p>
+  </section>
 
-<section class="watches" id="watches">
-    <div class="watch">
-        <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa">
-        <h3>Royal Gold</h3>
-        <p>$220</p>
-    </div>
-    <div class="watch">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
-        <h3>Classic Steel</h3>
-        <p>$180</p>
-    </div>
-    <div class="watch">
-        <img src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5">
-        <h3>Modern Black</h3>
-        <p>$210</p>
-    </div>
-</section>
+  <div id="products-container">
+    <div class="loading">جاري تحميل المنتوجات...</div>
+  </div>
 
-<section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <form id="form">
-        <input type="text" placeholder="Name" required><br>
-        <input type="email" placeholder="Email" required><br>
-        <input type="tel" placeholder="Phone"><br>
-        <textarea placeholder="Message"></textarea><br>
-        <button type="submit" id="btn">Send</button>
-    </form>
-</section>
-
-<footer>
-    <p>© 2026 Noblex Watches</p>
-</footer>
+  <footer>
+    <p>© 2026 Noblex. جميع الحقوق محفوظة</p>
+  </footer>
 
 <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyAICfONgwK1fmZGh47poTnPpdVD5RbjWFs",
-        authDomain: "noblex-c7336.firebaseapp.com",
-        projectId: "noblex-c7336",
-        storageBucket: "noblex-c7336.firebasestorage.app",
-        messagingSenderId: "829173834258",
-        appId: "1:829173834258:web:70a7ea3538df089cda2ecb",
-        measurementId: "G-B332Z8ELG8"
-    };
+  const firebaseConfig = {
+    apiKey: "AIzaSyAICfONgwK1fmZGh47poTnPpdVD5RbjWFs",
+    authDomain: "noblex-c7336.firebaseapp.com",
+    projectId: "noblex-c7336",
+    storageBucket: "noblex-c7336.firebasestorage.app",
+    messagingSenderId: "829173834258",
+    appId: "1:829173834258:web:70a7ea3538df089cda2ecb",
+    measurementId: "G-B332Z8ELG8"
+  };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-    document.getElementById("form").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const btn = document.getElementById("btn");
-        btn.disabled = true;
-        btn.innerText = "Sending...";
-
-        try {
-            await addDoc(collection(db, "messages"), {
-                name: e.target[0].value,
-                email: e.target[1].value,
-                phone: e.target[2].value,
-                message: e.target[3].value,
-                date: new Date()
-            });
-            alert("Success!");
-            e.target.reset();
-        } catch (err) {
-            alert("Error!");
-        } finally {
-            btn.disabled = false;
-            btn.innerText = "Send";
-        }
-    });
+  async function loadProducts() {
+    try {
+      const q = query(collection(db, "products"), orderBy("order"));
+      const querySnapshot = await getDocs(q);
+      const container = document.getElementById('products-container');
+      
+      if (querySnapshot.empty) {
+        container.innerHTML = '<div class="loading">لا توجد منتوجات حاليا</div>';
+        return;
+      }
+      
+      container.innerHTML = '';
+      querySnapshot.forEach((doc) => {
+        const p = doc.data();
+        container.innerHTML += `
+          <div class="product-card">
+            <img src="${p.image}" alt="${p.name}" loading="lazy">
+            <h3>${p.name}</h3>
+            <p>${p.price}</p>
+          </div>
+        `;
+      });
+    } catch (error) {
+      console.error("Error:", error);
+      document.getElementById('products-container').innerHTML = '<div class="loading">خطأ في تحميل المنتوجات</div>';
+    }
+  }
+  
+  loadProducts();
 </script>
 
 </body>
